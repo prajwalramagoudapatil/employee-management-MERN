@@ -1,0 +1,44 @@
+.container {
+    border: 1px solid;
+    display: grid;
+    padding: 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 30px 30px max-content 30px max-content;
+    gap: 1px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". . . ."
+      "title title  title title"
+      ". . count create-emp"
+      ". . search search"
+      "table table table table";
+  }
+  
+.title { 
+    grid-area: title;
+    background-color: yellow;
+    justify-content: left;
+    justify-items: flex-start;
+}
+.count { grid-area: count; }
+.create-emp {
+    grid-area: create-emp;
+    background-color: lightgreen;
+}
+.search { grid-area: search; }
+.table { grid-area: table; }
+
+
+label{
+    cursor: pointer;
+}
+
+.link{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* .custom-table th:nth-child(1), .custom-table td:nth-child(1) */
+.custom-table thead tr th , .custom-table tbody tr td {
+    padding: 3px;
+}

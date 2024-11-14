@@ -1,0 +1,20 @@
+<form id="image-upload-form">
+  <label htmlFor="file-upload">Upload Image:</label>
+  <input type="file" id="file-upload" name="file-upload" accept=".png, .jpg, .jpeg">
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  document.getElementById('image-upload-form').addEventListener('submit', function(event) {
+    const fileInput = document.getElementById('file-upload');
+    const filePath = fileInput.value;
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+
+    if (!allowedExtensions.exec(filePath)) {
+      alert('Please upload file having extensions .jpeg/.jpg/.png only.');
+      fileInput.value = '';
+      event.preventDefault();
+      return false;
+    }
+  });
+</script>
