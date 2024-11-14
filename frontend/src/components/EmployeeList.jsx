@@ -106,7 +106,6 @@ const EmployeeList = () => {
 
   return (
     <>
-    <p> dir: {sortConfig.direction} key:{sortConfig.key} </p>
     <div className='row bg- mx-1'>
     <div class="container">
           <div className="col">Home</div>
@@ -129,7 +128,7 @@ const EmployeeList = () => {
                   <th>Profile Image</th>
                   <th onClick={() => handleSort('name')} >Name</th>
                   <th onClick={() => handleSort('email')}>Email</th>
-                  <th onClick={() => handleSort('')} >Mobile</th>
+                  <th onClick={() => handleSort('mobile')} >Mobile</th>
                   <th>Designation</th>
                   <th>Gender</th>
                   <th>Courses</th>
