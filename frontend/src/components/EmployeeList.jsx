@@ -8,7 +8,7 @@ const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [message, setMessage] = useState([]);
   const [user, setUser] = useState('Keshava');
-  const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({ key: 'email', direction: 'ascending' });
   const [search, setSearch] = useState(''); 
   const navigate = useNavigate();
 
@@ -46,7 +46,8 @@ const EmployeeList = () => {
   const handleSearch = (event) => { setSearch(event.target.value); };
 
   const handleSort = (key) => { 
-    let direction = 'ascending'; 
+    let direction = 'ascending';
+
     if (sortConfig.key === key && sortConfig.direction === 'ascending') { 
       direction = 'descending'; 
     } 
@@ -65,13 +66,21 @@ const EmployeeList = () => {
     
     // Apply sorting 
     filteredEmployees.sort((a, b) => { 
-      if (a[sortConfig.key] < b[sortConfig.key]) { 
-        return sortConfig.direction === 'ascending' ? -1 : 1; 
+      // if (a[sortConfig.key] < b[sortConfig.key]) { 
+      //   return sortConfig.direction === 'ascending' ? -1 : 1; 
+      // } 
+      // if (a[sortConfig.key] > b[sortConfig.key]) { 
+      //   return sortConfig.direction === 'ascending' ? 1 : -1; 
+      // } 
+      if(  a[sortConfig.key].localeCompare(b[sortConfig.key]) > 0   ){
+        console.log('1...');
+        return sortConfig.direction === "ascending" ?  1 : -1 ;
       } 
-      if (a[sortConfig.key] > b[sortConfig.key]) { 
-        return sortConfig.direction === 'ascending' ? 1 : -1; 
-      } 
-      return 0; 
+      if(  a[sortConfig.key].localeCompare(b[sortConfig.key]) < 0   )  {
+        console.log('-1..');
+        return sortConfig.direction === "ascending" ?  -1 : 1 ;
+      }
+      return 0;
     }); 
     return filteredEmployees; 
   }, [employees, search, sortConfig]);
@@ -97,6 +106,7 @@ const EmployeeList = () => {
 
   return (
     <>
+    <p> dir: {sortConfig.direction} key:{sortConfig.key} </p>
     <div className='row bg- mx-1'>
     <div class="container">
           <div className="col">Home</div>

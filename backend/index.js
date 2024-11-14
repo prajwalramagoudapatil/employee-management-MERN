@@ -145,8 +145,8 @@ app.put("/employee/:id", authenticateToken,
         try {
             const { id } = req.params;
             console.log("Id recived in PUT:", id);
-            const { name, email, mobile, coursesCompleted, designation } = req.body
-            console.log(name, email, mobile, coursesCompleted, designation);
+            const { name, email, mobile,gender, coursesCompleted, designation } = req.body
+            console.log(name, email, mobile,gender, coursesCompleted, designation);
 
             let parsedCourses;
             console.log('Raama Sita bef parse checkedItems(courses)');
@@ -158,7 +158,7 @@ app.put("/employee/:id", authenticateToken,
 
             const updatedEmployee = await Employee.findByIdAndUpdate(
                 id, 
-                { name, email, mobile, coursesCompleted : parsedCourses, designation}, 
+                { name, email, mobile, gender, coursesCompleted : parsedCourses, designation}, 
                 { new: true }
             );
 

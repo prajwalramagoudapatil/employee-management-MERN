@@ -190,7 +190,7 @@ const CreateEmployeeForm = (props) => {
                             }
                         }}
                          />
-                        <div className="p-2"> {mobileMsg} {mobile && <span>{mobile}</span>} </div>
+                        <div className="p-2"> {mobileMsg} {mobile && <span>{}</span>} </div>
                 </div>
                 <br/>
                 <div className="d-flex">
